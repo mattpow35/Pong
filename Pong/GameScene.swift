@@ -19,12 +19,14 @@ class GameScene: SKScene
     
     override func didMove(to view: SKView)
     {
+        startGame()
+        
         pongBall = self.childNode(withName: "pongBall") as! SKSpriteNode
         enemyPaddle = self.childNode(withName: "enemyPaddle") as! SKSpriteNode
         userPaddle = self.childNode(withName: "userPaddle") as! SKSpriteNode
         
         pongBall.physicsBody?.applyImpulse(CGVector(dx: 20, dy: -20))
-        
+
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)
         
         border.friction = 0
@@ -36,19 +38,25 @@ class GameScene: SKScene
     
     func startGame()
     {
-        
+        score = [0,0]
     }
     
     func addScore(winningPlayer : SKSpriteNode)
     {
+        pongBall.position = CGPoint(x: 0, y: 0)
+        pongBall.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        
         if winningPlayer == userPaddle
         {
             score[0] += 1
+            pongBall.physicsBody?.applyImpulse(CGVector(dx: 20, dy: 20))
         }
         else if winningPlayer == enemyPaddle
         {
             score[1] += 1
+            pongBall.physicsBody?.applyImpulse(CGVector(dx: 20, dy: -20))
         }
+        print(score)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
@@ -77,11 +85,11 @@ class GameScene: SKScene
         
         enemyPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 1.0))
     
-        if pongBall.position.y <= -70
+        if pongBall.position.y <= userPaddle.position.y - 70
         {
             addScore(winningPlayer : enemyPaddle)
         }
-        else if pongBall.position.y >= 70
+        else if pongBall.position.y >= enemyPaddle.position.y + 70
         {
             addScore(winningPlayer : userPaddle)
         }

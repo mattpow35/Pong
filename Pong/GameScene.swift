@@ -27,13 +27,36 @@ class GameScene: SKScene
         
         border.friction = 0
         border.restitution = 1
+        
+        self.physicsBody = border
+        
+    }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        for touch in touches
+        {
+            let location = touch.location(in: self)
+            
+            userPaddle.run(SKAction .moveTo(x: location.x, duration: 0.2))
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        for touch in touches
+        {
+            let location = touch.location(in: self)
+            
+            userPaddle.run(SKAction .moveTo(x: location.x, duration: 0.2))
+        }
     }
     
     override func update(_ currentTime: TimeInterval)
     {
         // Called before each frame is rendered
         
+        enemyPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 1.0))
     
     }
 }

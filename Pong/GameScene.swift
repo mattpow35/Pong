@@ -15,12 +15,17 @@ class GameScene: SKScene
     var enemyPaddle = SKSpriteNode()
     var userPaddle = SKSpriteNode()
     
+    var enemyScore = SKLabelNode()
+    var userScore = SKLabelNode()
+    
     var score = [Int]()
     
     override func didMove(to view: SKView)
     {
         startGame()
         
+        enemyScore = self.childNode(withName: "enemyScore") as! SKLabelNode
+        userScore = self.childNode(withName: "userScore") as! SKLabelNode
         pongBall = self.childNode(withName: "pongBall") as! SKSpriteNode
         enemyPaddle = self.childNode(withName: "enemyPaddle") as! SKSpriteNode
         userPaddle = self.childNode(withName: "userPaddle") as! SKSpriteNode
@@ -39,6 +44,10 @@ class GameScene: SKScene
     func startGame()
     {
         score = [0,0]
+        
+        enemyScore.text = "\(score[1])"
+        userScore.text = "\(score[0])"
+        
     }
     
     func addScore(winningPlayer : SKSpriteNode)
@@ -56,7 +65,8 @@ class GameScene: SKScene
             score[1] += 1
             pongBall.physicsBody?.applyImpulse(CGVector(dx: 20, dy: -20))
         }
-        print(score)
+        enemyScore.text = "\(score[1])"
+        userScore.text = "\(score[0])"
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)

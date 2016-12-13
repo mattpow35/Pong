@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF783EF81DFCC11D00AF6FB4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF783EF71DFCC11D00AF6FB4 /* Launch Screen.storyboard */; };
+		FFC2139D1DFF75D50070B05D /* StartScreen.sks in Resources */ = {isa = PBXBuildFile; fileRef = FFC2139C1DFF75D50070B05D /* StartScreen.sks */; };
+		FFC2139F1DFF75E70070B05D /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC2139E1DFF75E70070B05D /* StartScreen.swift */; };
 		FFD17F7B1DF8E6F8007B5491 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD17F7A1DF8E6F8007B5491 /* AppDelegate.swift */; };
 		FFD17F7D1DF8E6F8007B5491 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FFD17F7C1DF8E6F8007B5491 /* GameScene.sks */; };
 		FFD17F7F1DF8E6F8007B5491 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = FFD17F7E1DF8E6F8007B5491 /* Actions.sks */; };
@@ -37,6 +40,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FF783EF71DFCC11D00AF6FB4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		FFC2139C1DFF75D50070B05D /* StartScreen.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScreen.sks; sourceTree = "<group>"; };
+		FFC2139E1DFF75E70070B05D /* StartScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
 		FFD17F771DF8E6F8007B5491 /* Pong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pong.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFD17F7A1DF8E6F8007B5491 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFD17F7C1DF8E6F8007B5491 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -104,10 +110,13 @@
 			isa = PBXGroup;
 			children = (
 				FFD17F7A1DF8E6F8007B5491 /* AppDelegate.swift */,
+				FF783EF71DFCC11D00AF6FB4 /* Launch Screen.storyboard */,
 				FFD17F7C1DF8E6F8007B5491 /* GameScene.sks */,
 				FFD17F7E1DF8E6F8007B5491 /* Actions.sks */,
 				FFD17F801DF8E6F8007B5491 /* GameScene.swift */,
 				FFD17F821DF8E6F8007B5491 /* GameViewController.swift */,
+				FFC2139C1DFF75D50070B05D /* StartScreen.sks */,
+				FFC2139E1DFF75E70070B05D /* StartScreen.swift */,
 				FFD17F841DF8E6F8007B5491 /* Main.storyboard */,
 				FFD17F871DF8E6F8007B5491 /* Assets.xcassets */,
 				FFD17F891DF8E6F8007B5491 /* LaunchScreen.storyboard */,
@@ -244,10 +253,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF783EF81DFCC11D00AF6FB4 /* Launch Screen.storyboard in Resources */,
 				FFD17F861DF8E6F8007B5491 /* Main.storyboard in Resources */,
 				FFD17F7D1DF8E6F8007B5491 /* GameScene.sks in Resources */,
 				FFD17F881DF8E6F8007B5491 /* Assets.xcassets in Resources */,
 				FFD17F8B1DF8E6F8007B5491 /* LaunchScreen.storyboard in Resources */,
+				FFC2139D1DFF75D50070B05D /* StartScreen.sks in Resources */,
 				FFD17F7F1DF8E6F8007B5491 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,6 +286,7 @@
 			files = (
 				FFD17F811DF8E6F8007B5491 /* GameScene.swift in Sources */,
 				FFD17F831DF8E6F8007B5491 /* GameViewController.swift in Sources */,
+				FFC2139F1DFF75E70070B05D /* StartScreen.swift in Sources */,
 				FFD17F7B1DF8E6F8007B5491 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,6 +540,7 @@
 				FFD17FA71DF8E6F8007B5491 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FFD17FA81DF8E6F8007B5491 /* Build configuration list for PBXNativeTarget "PongTests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +549,7 @@
 				FFD17FAA1DF8E6F8007B5491 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FFD17FAB1DF8E6F8007B5491 /* Build configuration list for PBXNativeTarget "PongUITests" */ = {
 			isa = XCConfigurationList;
@@ -544,6 +558,7 @@
 				FFD17FAD1DF8E6F8007B5491 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

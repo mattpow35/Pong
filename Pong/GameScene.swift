@@ -14,11 +14,12 @@ class GameScene: SKScene
     var pongBall = SKSpriteNode()
     var enemyPaddle = SKSpriteNode()
     var userPaddle = SKSpriteNode()
-    
+    var countdownTimer = SKLabelNode()
     var enemyScore = SKLabelNode()
     var userScore = SKLabelNode()
-    
+    var counter = 3
     var score = [Int]()
+    
     
     override func didMove(to view: SKView)
     {
@@ -29,6 +30,8 @@ class GameScene: SKScene
         pongBall = self.childNode(withName: "pongBall") as! SKSpriteNode
         enemyPaddle = self.childNode(withName: "enemyPaddle") as! SKSpriteNode
         userPaddle = self.childNode(withName: "userPaddle") as! SKSpriteNode
+        
+        
         
         pongBall.physicsBody?.applyImpulse(CGVector(dx: 20, dy: -20))
 
@@ -47,6 +50,9 @@ class GameScene: SKScene
         
         enemyScore.text = "\(score[1])"
         userScore.text = "\(score[0])"
+        
+        countdownTimer.text = "\(counter)"
+        
         
     }
     
@@ -104,4 +110,5 @@ class GameScene: SKScene
             addScore(winningPlayer : userPaddle)
         }
     }
+    
 }

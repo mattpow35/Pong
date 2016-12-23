@@ -95,6 +95,15 @@ class GameScene: SKScene
         }
     }
     
+    func updateCounter()
+    {
+        if counter > 0
+        {
+            counter = -1
+            
+        }
+    }
+    
     override func update(_ currentTime: TimeInterval)
     {
         // Called before each frame is rendered

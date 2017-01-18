@@ -59,11 +59,18 @@ class GameScene: SKScene
         
         enemyScore.text = "\(score[1])"
         userScore.text = "\(score[0])"
-        pongBall.physicsBody?.applyImpulse(CGVector(dx: 10, dy: -10))
         
+    
+        let when = DispatchTime.now() + 3 
+        DispatchQueue.main.asyncAfter(deadline: when)
+        {
+            self.pongBall.physicsBody?.applyImpulse(CGVector(dx: 12, dy: -12))
+        }
         
         
     }
+    
+
     
     func addScore(winningPlayer : SKSpriteNode)
     {
@@ -73,12 +80,30 @@ class GameScene: SKScene
         if winningPlayer == userPaddle
         {
             score[0] += 1
-            pongBall.physicsBody?.applyImpulse(CGVector(dx: 10, dy: 10))
+            
+            if(score[0] % 2 == 1)
+            {
+                pongBall.physicsBody?.applyImpulse(CGVector(dx: 12, dy: 12))
+            }
+            else
+            {
+                pongBall.physicsBody?.applyImpulse(CGVector(dx: -12, dy: 12))            }
+            
+            
         }
         else if winningPlayer == enemyPaddle
         {
             score[1] += 1
-            pongBall.physicsBody?.applyImpulse(CGVector(dx: 10, dy: -10))
+            
+            if(score[1] % 2 == 1)
+            {
+                pongBall.physicsBody?.applyImpulse(CGVector(dx: 12, dy: -12))
+            }
+            else
+            {
+                pongBall.physicsBody?.applyImpulse(CGVector(dx: -12, dy: -12))
+            }
+            
         }
         enemyScore.text = "\(score[1])"
         userScore.text = "\(score[0])"
@@ -109,7 +134,6 @@ class GameScene: SKScene
     {
         // Called before each frame is rendered
         
-<<<<<<< Updated upstream
         switch currentDifficulty
         {
         case .easy:
@@ -125,15 +149,6 @@ class GameScene: SKScene
         }
         
         
-        
-        
-        
-        
-        
-        
-=======
-        enemyPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 0.25))
->>>>>>> Stashed changes
     
         if pongBall.position.y <= userPaddle.position.y - 30
         {

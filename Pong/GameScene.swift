@@ -109,6 +109,7 @@ class GameScene: SKScene
     {
         // Called before each frame is rendered
         
+<<<<<<< Updated upstream
         switch currentDifficulty
         {
         case .easy:
@@ -130,6 +131,9 @@ class GameScene: SKScene
         
         
         
+=======
+        enemyPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 0.25))
+>>>>>>> Stashed changes
     
         if pongBall.position.y <= userPaddle.position.y - 30
         {

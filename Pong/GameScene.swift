@@ -14,26 +14,34 @@ class GameScene: SKScene
     var pongBall = SKSpriteNode()
     var enemyPaddle = SKSpriteNode()
     var userPaddle = SKSpriteNode()
-    var countdownTimer = SKLabelNode()
     var enemyScore = SKLabelNode()
     var userScore = SKLabelNode()
-    var counter = 3
     var score = [Int]()
     
     
     override func didMove(to view: SKView)
     {
-        startGame()
+        
         
         enemyScore = self.childNode(withName: "enemyScore") as! SKLabelNode
+        enemyScore.position.x = (-self.frame.width / 2) + 25
+        enemyScore.position.y = 50
+        
         userScore = self.childNode(withName: "userScore") as! SKLabelNode
+        userScore.position.x = (-self.frame.width / 2) + 25
+        userScore.position.y = -50
+        
         pongBall = self.childNode(withName: "pongBall") as! SKSpriteNode
         enemyPaddle = self.childNode(withName: "enemyPaddle") as! SKSpriteNode
+        enemyPaddle.position.y = (self.frame.height / 2) - 50
+        
+        
         userPaddle = self.childNode(withName: "userPaddle") as! SKSpriteNode
+        userPaddle.position.y = (-self.frame.height / 2) + 50
         
         
         
-        pongBall.physicsBody?.applyImpulse(CGVector(dx: 20, dy: -20))
+       
 
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)
         
@@ -42,7 +50,8 @@ class GameScene: SKScene
         
         self.physicsBody = border
         
-    }
+        
+        startGame()    }
     
     func startGame()
     {
@@ -50,8 +59,8 @@ class GameScene: SKScene
         
         enemyScore.text = "\(score[1])"
         userScore.text = "\(score[0])"
+        pongBall.physicsBody?.applyImpulse(CGVector(dx: 10, dy: -10))
         
-        countdownTimer.text = "\(counter)"
         
         
     }
@@ -64,12 +73,12 @@ class GameScene: SKScene
         if winningPlayer == userPaddle
         {
             score[0] += 1
-            pongBall.physicsBody?.applyImpulse(CGVector(dx: 20, dy: 20))
+            pongBall.physicsBody?.applyImpulse(CGVector(dx: 10, dy: 10))
         }
         else if winningPlayer == enemyPaddle
         {
             score[1] += 1
-            pongBall.physicsBody?.applyImpulse(CGVector(dx: 20, dy: -20))
+            pongBall.physicsBody?.applyImpulse(CGVector(dx: 10, dy: -10))
         }
         enemyScore.text = "\(score[1])"
         userScore.text = "\(score[0])"
@@ -95,26 +104,38 @@ class GameScene: SKScene
         }
     }
     
-    func updateCounter()
-    {
-        if counter > 0
-        {
-            counter = -1
-            
-        }
-    }
     
     override func update(_ currentTime: TimeInterval)
     {
         // Called before each frame is rendered
         
-        enemyPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 1.0))
+        switch currentDifficulty
+        {
+        case .easy:
+            enemyPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 1.0))
+            break
+        case .medium:
+            enemyPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 0.75))
+            break
+        case .hard:
+            enemyPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 0.5))
+            break
+        
+        }
+        
+        
+        
+        
+        
+        
+        
+        
     
-        if pongBall.position.y <= userPaddle.position.y - 70
+        if pongBall.position.y <= userPaddle.position.y - 30
         {
             addScore(winningPlayer : enemyPaddle)
         }
-        else if pongBall.position.y >= enemyPaddle.position.y + 70
+        else if pongBall.position.y >= enemyPaddle.position.y + 30
         {
             addScore(winningPlayer : userPaddle)
         }

@@ -13,11 +13,11 @@
 		FFD17F7F1DF8E6F8007B5491 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = FFD17F7E1DF8E6F8007B5491 /* Actions.sks */; };
 		FFD17F811DF8E6F8007B5491 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD17F801DF8E6F8007B5491 /* GameScene.swift */; };
 		FFD17F831DF8E6F8007B5491 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD17F821DF8E6F8007B5491 /* GameViewController.swift */; };
-		FFD17F861DF8E6F8007B5491 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFD17F841DF8E6F8007B5491 /* Main.storyboard */; };
 		FFD17F881DF8E6F8007B5491 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFD17F871DF8E6F8007B5491 /* Assets.xcassets */; };
-		FFD17F8B1DF8E6F8007B5491 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFD17F891DF8E6F8007B5491 /* LaunchScreen.storyboard */; };
 		FFD17F961DF8E6F8007B5491 /* PongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD17F951DF8E6F8007B5491 /* PongTests.swift */; };
 		FFD17FA11DF8E6F8007B5491 /* PongUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD17FA01DF8E6F8007B5491 /* PongUITests.swift */; };
+		FFD9B7081E2F0BDA00EA30C4 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9B7071E2F0BDA00EA30C4 /* MainMenu.swift */; };
+		FFD9B70F1E2F12C000EA30C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFD9B70E1E2F12C000EA30C4 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,9 +45,7 @@
 		FFD17F7E1DF8E6F8007B5491 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		FFD17F801DF8E6F8007B5491 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		FFD17F821DF8E6F8007B5491 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		FFD17F851DF8E6F8007B5491 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FFD17F871DF8E6F8007B5491 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		FFD17F8A1DF8E6F8007B5491 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFD17F8C1DF8E6F8007B5491 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFD17F911DF8E6F8007B5491 /* PongTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PongTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFD17F951DF8E6F8007B5491 /* PongTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongTests.swift; sourceTree = "<group>"; };
@@ -55,6 +53,8 @@
 		FFD17F9C1DF8E6F8007B5491 /* PongUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PongUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFD17FA01DF8E6F8007B5491 /* PongUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PongUITests.swift; sourceTree = "<group>"; };
 		FFD17FA21DF8E6F8007B5491 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFD9B7071E2F0BDA00EA30C4 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainMenu.swift; path = ../MainMenu.swift; sourceTree = "<group>"; };
+		FFD9B70E1E2F12C000EA30C4 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,15 +105,15 @@
 		FFD17F791DF8E6F8007B5491 /* Pong */ = {
 			isa = PBXGroup;
 			children = (
+				FFD9B70E1E2F12C000EA30C4 /* Main.storyboard */,
 				FFD17F7A1DF8E6F8007B5491 /* AppDelegate.swift */,
 				FF783EF71DFCC11D00AF6FB4 /* Launch Screen.storyboard */,
 				FFD17F7C1DF8E6F8007B5491 /* GameScene.sks */,
 				FFD17F7E1DF8E6F8007B5491 /* Actions.sks */,
 				FFD17F801DF8E6F8007B5491 /* GameScene.swift */,
 				FFD17F821DF8E6F8007B5491 /* GameViewController.swift */,
-				FFD17F841DF8E6F8007B5491 /* Main.storyboard */,
+				FFD9B7071E2F0BDA00EA30C4 /* MainMenu.swift */,
 				FFD17F871DF8E6F8007B5491 /* Assets.xcassets */,
-				FFD17F891DF8E6F8007B5491 /* LaunchScreen.storyboard */,
 				FFD17F8C1DF8E6F8007B5491 /* Info.plist */,
 			);
 			path = Pong;
@@ -248,10 +248,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF783EF81DFCC11D00AF6FB4 /* Launch Screen.storyboard in Resources */,
-				FFD17F861DF8E6F8007B5491 /* Main.storyboard in Resources */,
+				FFD9B70F1E2F12C000EA30C4 /* Main.storyboard in Resources */,
 				FFD17F7D1DF8E6F8007B5491 /* GameScene.sks in Resources */,
 				FFD17F881DF8E6F8007B5491 /* Assets.xcassets in Resources */,
-				FFD17F8B1DF8E6F8007B5491 /* LaunchScreen.storyboard in Resources */,
 				FFD17F7F1DF8E6F8007B5491 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +279,7 @@
 				FFD17F811DF8E6F8007B5491 /* GameScene.swift in Sources */,
 				FFD17F831DF8E6F8007B5491 /* GameViewController.swift in Sources */,
 				FFD17F7B1DF8E6F8007B5491 /* AppDelegate.swift in Sources */,
+				FFD9B7081E2F0BDA00EA30C4 /* MainMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,25 +313,6 @@
 			targetProxy = FFD17F9D1DF8E6F8007B5491 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		FFD17F841DF8E6F8007B5491 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FFD17F851DF8E6F8007B5491 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		FFD17F891DF8E6F8007B5491 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FFD17F8A1DF8E6F8007B5491 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		FFD17FA31DF8E6F8007B5491 /* Debug */ = {

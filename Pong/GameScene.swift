@@ -51,7 +51,8 @@ class GameScene: SKScene
         self.physicsBody = border
         
         
-        startGame()    }
+        startGame()
+    }
     
     func startGame()
     {

@@ -17,7 +17,8 @@ class GameScene: SKScene
     var enemyScore = SKLabelNode()
     var userScore = SKLabelNode()
     var score = [Int]()
-    
+    var endlessScore = SKLabelNode()
+    var onePlayerScore = [Int]()
     
     override func didMove(to view: SKView)
     {
@@ -31,6 +32,11 @@ class GameScene: SKScene
         userScore.position.x = (-self.frame.width / 2) + 25
         userScore.position.y = -50
         
+        endlessScore = self.childNode(withName: "endlessScore") as! SKLabelNode
+        endlessScore.position.x = 0
+        endlessScore.position.y = 0
+     
+            
         pongBall = self.childNode(withName: "pongBall") as! SKSpriteNode
         enemyPaddle = self.childNode(withName: "enemyPaddle") as! SKSpriteNode
         enemyPaddle.position.y = (self.frame.height / 2) - 50
@@ -61,6 +67,11 @@ class GameScene: SKScene
         enemyScore.text = "\(score[1])"
         userScore.text = "\(score[0])"
         
+        onePlayerScore = [0]
+        
+        endlessScore.text = "\(onePlayerScore[0])"
+        
+        
     
         let when = DispatchTime.now() + 2
         DispatchQueue.main.asyncAfter(deadline: when)
@@ -81,6 +92,8 @@ class GameScene: SKScene
         if winningPlayer == userPaddle
         {
             score[0] += 1
+            
+            onePlayerScore[0] += 1
             
             if(score[0] % 2 == 1)
             {
@@ -125,6 +138,8 @@ class GameScene: SKScene
         }
         enemyScore.text = "\(score[1])"
         userScore.text = "\(score[0])"
+        
+        endlessScore.text = "\(onePlayerScore[0])"
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)

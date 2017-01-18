@@ -61,7 +61,7 @@ class GameScene: SKScene
         userScore.text = "\(score[0])"
         
     
-        let when = DispatchTime.now() + 3 
+        let when = DispatchTime.now() + 2
         DispatchQueue.main.asyncAfter(deadline: when)
         {
             self.pongBall.physicsBody?.applyImpulse(CGVector(dx: 12, dy: -12))
@@ -83,11 +83,20 @@ class GameScene: SKScene
             
             if(score[0] % 2 == 1)
             {
-                pongBall.physicsBody?.applyImpulse(CGVector(dx: 12, dy: 12))
+                let when = DispatchTime.now() + 2
+                DispatchQueue.main.asyncAfter(deadline: when)
+                {
+                    self.pongBall.physicsBody?.applyImpulse(CGVector(dx: -12, dy: 12))
+                }
             }
             else
             {
-                pongBall.physicsBody?.applyImpulse(CGVector(dx: -12, dy: 12))            }
+                let when = DispatchTime.now() + 2
+                DispatchQueue.main.asyncAfter(deadline: when)
+                {
+                    self.pongBall.physicsBody?.applyImpulse(CGVector(dx: 12, dy: 12))
+                }
+            }
             
             
         }
@@ -97,11 +106,19 @@ class GameScene: SKScene
             
             if(score[1] % 2 == 1)
             {
-                pongBall.physicsBody?.applyImpulse(CGVector(dx: 12, dy: -12))
+                let when = DispatchTime.now() + 2
+                DispatchQueue.main.asyncAfter(deadline: when)
+                {
+                    self.pongBall.physicsBody?.applyImpulse(CGVector(dx: -12, dy: -12))
+                }
             }
             else
             {
-                pongBall.physicsBody?.applyImpulse(CGVector(dx: -12, dy: -12))
+                let when = DispatchTime.now() + 2
+                DispatchQueue.main.asyncAfter(deadline: when)
+                {
+                    self.pongBall.physicsBody?.applyImpulse(CGVector(dx: 12, dy: -12))
+                }
             }
             
         }

@@ -20,6 +20,7 @@ class GameScene: SKScene
     var endlessScore = SKLabelNode()
     var onePlayerScore = [Int]()
     
+    
     override func didMove(to view: SKView)
     {
         
@@ -186,6 +187,14 @@ class GameScene: SKScene
         if pongBall.position.y <= userPaddle.position.y - 30
         {
             addScore(winningPlayer : enemyPaddle)
+            
+            //let MainMenu = self.storyboard?.instantiateViewController(withIdentifier: "MainMenu") as! MainMenu
+            
+            //self.navigationController?.pushViewController(MainMenu, animated: true)
+            
+            
+            
+            
         }
         else if pongBall.position.y >= enemyPaddle.position.y + 30
         {

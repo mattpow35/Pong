@@ -89,12 +89,6 @@ class GameScene: SKScene
         
     }
     
-    
-    func randomFloat(from: CGFloat, to: CGFloat) -> CGFloat
-    {
-        let rand: CGFloat = CGFloat(Float(arc4random()) / 0xFFFFFFFF)
-        return (rand) * (to - from) + from
-    }
 
     
     func addScore(winningPlayer : SKSpriteNode)
@@ -187,20 +181,6 @@ class GameScene: SKScene
     override func update(_ currentTime: TimeInterval)
     {
         // Called before each frame is rendered
-        
-        switch currentDifficulty
-        {
-        case .easy:
-            enemyPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 1.0))
-            break
-        case .medium:
-            enemyPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 0.75))
-            break
-        case .hard:
-            enemyPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 0.5))
-            break
-        
-        }
         
         
     

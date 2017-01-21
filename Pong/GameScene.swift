@@ -149,6 +149,8 @@ class GameScene: SKScene
                 }
             }
             
+            onePlayerScore[0] = 0
+            
         }
         enemyScore.text = "\(score[1])"
         userScore.text = "\(score[0])"

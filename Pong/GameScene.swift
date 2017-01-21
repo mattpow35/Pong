@@ -20,7 +20,10 @@ class GameScene: SKScene
     var endlessScore = SKLabelNode()
     var onePlayerScore = [Int]()
     
+    
     lazy var gameState: GKStateMachine = GKStateMachine(states: [TapToPlay(scene: self), PlayGame(scene: self), GameOver(scene: self)])
+    
+    let GameMessageName = "gameMessage"
     
     
     override func didMove(to view: SKView)
@@ -28,12 +31,12 @@ class GameScene: SKScene
         
         
         enemyScore = self.childNode(withName: "enemyScore") as! SKLabelNode
-        enemyScore.position.x = (-self.frame.width / 2) + 25
-        enemyScore.position.y = 50
+        //enemyScore.position.x = (-self.frame.width / 2) + 25
+        //enemyScore.position.y = 50
         
         userScore = self.childNode(withName: "userScore") as! SKLabelNode
-        userScore.position.x = (-self.frame.width / 2) + 25
-        userScore.position.y = -50
+        //userScore.position.x = (-self.frame.width / 2) + 25
+        //userScore.position.y = -50
         
         endlessScore = self.childNode(withName: "endlessScore") as! SKLabelNode
         endlessScore.position.x = 0
@@ -60,7 +63,19 @@ class GameScene: SKScene
         self.physicsBody = border
         
         
-        startGame()
+        
+        
+        let gameMessage = SKSpriteNode(imageNamed: "TAP TO PLAY")
+        gameMessage.name = GameMessageName
+        gameMessage.position = CGPoint(x: frame.midX, y : frame.midY)
+        gameMessage.zPosition = 4
+        gameMessage.setScale(0.0)
+        addChild(gameMessage)
+        
+        gameState.enter(TapToPlay.self)
+        
+        //startGame()
+        
     }
     
     func startGame()
@@ -85,6 +100,12 @@ class GameScene: SKScene
         
     }
     
+    
+    func randomFloat(from: CGFloat, to: CGFloat) -> CGFloat
+    {
+        let rand: CGFloat = CGFloat(Float(arc4random()) / 0xFFFFFFFF)
+        return (rand) * (to - from) + from
+    }
 
     
     func addScore(winningPlayer : SKSpriteNode)
@@ -147,15 +168,32 @@ class GameScene: SKScene
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
-        for touch in touches
+        switch gameState.currentState
         {
-            let location = touch.location(in: self)
+        case is TapToPlay:
+            gameState.enter(PlayGame.self)
+          
+        case is PlayGame:
+            for touch in touches
+            {
+                let location = touch.location(in: self)
+                
+                userPaddle.run(SKAction .moveTo(x: location.x, duration: 0.2))
+            }
+        
+        
+//        for touch in touches
+//        {
+//            let location = touch.location(in: self)
+//            
+//            userPaddle.run(SKAction .moveTo(x: location.x, duration: 0.2))
+//        }
             
-            userPaddle.run(SKAction .moveTo(x: location.x, duration: 0.2))
-        }
+        default:
+            break
     }
     
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?)
+    func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         for touch in touches
         {
@@ -166,10 +204,10 @@ class GameScene: SKScene
     }
     
     
-    override func update(_ currentTime: TimeInterval)
+    func update(_ currentTime: TimeInterval)
     {
         // Called before each frame is rendered
-        
+        //gameState.update(deltaTime: currentTime)
         switch currentDifficulty
         {
         case .easy:
@@ -204,4 +242,5 @@ class GameScene: SKScene
         }
     }
     
+}
 }

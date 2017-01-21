@@ -18,13 +18,13 @@ class GameOver : GKState
         self.scene = scene as! GameScene
         super.init()
     }
-    
-    override func didEnter(from previousState: GKState?) {
-        <#code#>
-    }
-    
-    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
-        return stateClass is TapToPlay.Type
-    }
+//    
+//    override func didEnter(from previousState: GKState?) {
+//        <#code#>
+//    }
+//    
+//    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
+//        return stateClass is TapToPlay.Type
+//    }
     
 }

@@ -22,7 +22,6 @@ class GameScene: SKScene
     
 
     
-    
     override func didMove(to view: SKView)
     {
         
@@ -148,6 +147,7 @@ class GameScene: SKScene
                     self.pongBall.physicsBody?.applyImpulse(CGVector(dx: 12, dy: -12))
                 }
             }
+            
             
             onePlayerScore[0] = 0
             

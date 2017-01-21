@@ -20,10 +20,7 @@ class GameScene: SKScene
     var endlessScore = SKLabelNode()
     var onePlayerScore = [Int]()
     
-    
-    lazy var gameState: GKStateMachine = GKStateMachine(states: [TapToPlay(scene: self), PlayGame(scene: self), GameOver(scene: self)])
-    
-    let GameMessageName = "gameMessage"
+
     
     
     override func didMove(to view: SKView)
@@ -65,16 +62,9 @@ class GameScene: SKScene
         
         
         
-        let gameMessage = SKSpriteNode(imageNamed: "TAP TO PLAY")
-        gameMessage.name = GameMessageName
-        gameMessage.position = CGPoint(x: frame.midX, y : frame.midY)
-        gameMessage.zPosition = 4
-        gameMessage.setScale(0.0)
-        addChild(gameMessage)
+   
         
-        gameState.enter(TapToPlay.self)
-        
-        //startGame()
+        startGame()
         
     }
     
@@ -91,7 +81,7 @@ class GameScene: SKScene
         
         
     
-        let when = DispatchTime.now() + 2
+        let when = DispatchTime.now() + 1
         DispatchQueue.main.asyncAfter(deadline: when)
         {
             self.pongBall.physicsBody?.applyImpulse(CGVector(dx: 12, dy: -12))
@@ -121,7 +111,7 @@ class GameScene: SKScene
             
             if(score[0] % 2 == 1)
             {
-                let when = DispatchTime.now() + 2
+                let when = DispatchTime.now() + 1
                 DispatchQueue.main.asyncAfter(deadline: when)
                 {
                     self.pongBall.physicsBody?.applyImpulse(CGVector(dx: -12, dy: 12))
@@ -129,7 +119,7 @@ class GameScene: SKScene
             }
             else
             {
-                let when = DispatchTime.now() + 2
+                let when = DispatchTime.now() + 1
                 DispatchQueue.main.asyncAfter(deadline: when)
                 {
                     self.pongBall.physicsBody?.applyImpulse(CGVector(dx: 12, dy: 12))
@@ -144,7 +134,7 @@ class GameScene: SKScene
             
             if(score[1] % 2 == 1)
             {
-                let when = DispatchTime.now() + 2
+                let when = DispatchTime.now() + 1
                 DispatchQueue.main.asyncAfter(deadline: when)
                 {
                     self.pongBall.physicsBody?.applyImpulse(CGVector(dx: -12, dy: -12))
@@ -152,7 +142,7 @@ class GameScene: SKScene
             }
             else
             {
-                let when = DispatchTime.now() + 2
+                let when = DispatchTime.now() + 1
                 DispatchQueue.main.asyncAfter(deadline: when)
                 {
                     self.pongBall.physicsBody?.applyImpulse(CGVector(dx: 12, dy: -12))
@@ -168,32 +158,20 @@ class GameScene: SKScene
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
-        switch gameState.currentState
+        
+        
+        
+        for touch in touches
         {
-        case is TapToPlay:
-            gameState.enter(PlayGame.self)
-          
-        case is PlayGame:
-            for touch in touches
-            {
-                let location = touch.location(in: self)
-                
-                userPaddle.run(SKAction .moveTo(x: location.x, duration: 0.2))
-            }
-        
-        
-//        for touch in touches
-//        {
-//            let location = touch.location(in: self)
-//            
-//            userPaddle.run(SKAction .moveTo(x: location.x, duration: 0.2))
-//        }
+            let location = touch.location(in: self)
             
-        default:
-            break
+            userPaddle.run(SKAction .moveTo(x: location.x, duration: 0.2))
+        }
+        
+        
     }
     
-    func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?)
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?)
     {
         for touch in touches
         {
@@ -204,10 +182,10 @@ class GameScene: SKScene
     }
     
     
-    func update(_ currentTime: TimeInterval)
+    override func update(_ currentTime: TimeInterval)
     {
         // Called before each frame is rendered
-        //gameState.update(deltaTime: currentTime)
+        
         switch currentDifficulty
         {
         case .easy:
@@ -232,9 +210,6 @@ class GameScene: SKScene
             
             //self.navigationController?.pushViewController(MainMenu, animated: true)
             
-            
-            
-            
         }
         else if pongBall.position.y >= enemyPaddle.position.y + 30
         {
@@ -242,5 +217,4 @@ class GameScene: SKScene
         }
     }
     
-}
 }

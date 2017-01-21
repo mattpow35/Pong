@@ -20,6 +20,8 @@ class GameScene: SKScene
     var endlessScore = SKLabelNode()
     var onePlayerScore = [Int]()
     
+    lazy var gameState: GKStateMachine = GKStateMachine(states: [TapToPlay(scene: self), PlayGame(scene: self), GameOver(scene: self)])
+    
     
     override func didMove(to view: SKView)
     {

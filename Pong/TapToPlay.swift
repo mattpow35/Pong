@@ -21,11 +21,17 @@ class TapToPlay: GKState
     
     override func didEnter(from previousState: GKState?)
     {
-        <#code#>
+        let scale = SKAction.scale(to: 1.0, duration: 0.25)
+        scene.childNode(withName: "gameMessage")!.run(scale)
     }
     
-    override func willExit(to nextState: GKState) {
-        <#code#>
+    override func willExit(to nextState: GKState)
+    {
+        if nextState is PlayGame
+        {
+            let scale = SKAction.scale(to: 0, duration: 0.4)
+            scene.childNode(withName: "gameMessage")!.run(scale)
+        }
     }
     
     override func isValidNextState(_ stateClass: AnyClass) -> Bool

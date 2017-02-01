@@ -20,7 +20,7 @@ class GameScene: SKScene
     var endlessScore = SKLabelNode()
     var onePlayerScore = [Int]()
     
-    lazy var gameState: GKStateMachine = GKStateMachine(states: [TapToPlay(scene: self), PlayGame(scene: self), GameOver(scene: self)])
+
     
     
     override func didMove(to view: SKView)
@@ -28,12 +28,12 @@ class GameScene: SKScene
         
         
         enemyScore = self.childNode(withName: "enemyScore") as! SKLabelNode
-        enemyScore.position.x = (-self.frame.width / 2) + 25
-        enemyScore.position.y = 50
+        //enemyScore.position.x = (-self.frame.width / 2) + 25
+        //enemyScore.position.y = 50
         
         userScore = self.childNode(withName: "userScore") as! SKLabelNode
-        userScore.position.x = (-self.frame.width / 2) + 25
-        userScore.position.y = -50
+        //userScore.position.x = (-self.frame.width / 2) + 25
+        //userScore.position.y = -50
         
         endlessScore = self.childNode(withName: "endlessScore") as! SKLabelNode
         endlessScore.position.x = 0
@@ -60,7 +60,12 @@ class GameScene: SKScene
         self.physicsBody = border
         
         
+        
+        
+   
+        
         startGame()
+        
     }
     
     func startGame()
@@ -76,7 +81,7 @@ class GameScene: SKScene
         
         
     
-        let when = DispatchTime.now() + 2
+        let when = DispatchTime.now() + 1
         DispatchQueue.main.asyncAfter(deadline: when)
         {
             self.pongBall.physicsBody?.applyImpulse(CGVector(dx: 12, dy: -12))
@@ -85,6 +90,12 @@ class GameScene: SKScene
         
     }
     
+    
+    func randomFloat(from: CGFloat, to: CGFloat) -> CGFloat
+    {
+        let rand: CGFloat = CGFloat(Float(arc4random()) / 0xFFFFFFFF)
+        return (rand) * (to - from) + from
+    }
 
     
     func addScore(winningPlayer : SKSpriteNode)
@@ -100,7 +111,7 @@ class GameScene: SKScene
             
             if(score[0] % 2 == 1)
             {
-                let when = DispatchTime.now() + 2
+                let when = DispatchTime.now() + 1
                 DispatchQueue.main.asyncAfter(deadline: when)
                 {
                     self.pongBall.physicsBody?.applyImpulse(CGVector(dx: -12, dy: 12))
@@ -108,7 +119,7 @@ class GameScene: SKScene
             }
             else
             {
-                let when = DispatchTime.now() + 2
+                let when = DispatchTime.now() + 1
                 DispatchQueue.main.asyncAfter(deadline: when)
                 {
                     self.pongBall.physicsBody?.applyImpulse(CGVector(dx: 12, dy: 12))
@@ -123,7 +134,7 @@ class GameScene: SKScene
             
             if(score[1] % 2 == 1)
             {
-                let when = DispatchTime.now() + 2
+                let when = DispatchTime.now() + 1
                 DispatchQueue.main.asyncAfter(deadline: when)
                 {
                     self.pongBall.physicsBody?.applyImpulse(CGVector(dx: -12, dy: -12))
@@ -131,12 +142,14 @@ class GameScene: SKScene
             }
             else
             {
-                let when = DispatchTime.now() + 2
+                let when = DispatchTime.now() + 1
                 DispatchQueue.main.asyncAfter(deadline: when)
                 {
                     self.pongBall.physicsBody?.applyImpulse(CGVector(dx: 12, dy: -12))
                 }
             }
+            
+            onePlayerScore[0] = 0
             
         }
         enemyScore.text = "\(score[1])"
@@ -147,12 +160,17 @@ class GameScene: SKScene
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
+        
+        
+        
         for touch in touches
         {
             let location = touch.location(in: self)
             
             userPaddle.run(SKAction .moveTo(x: location.x, duration: 0.2))
         }
+        
+        
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?)
@@ -193,9 +211,6 @@ class GameScene: SKScene
             //let MainMenu = self.storyboard?.instantiateViewController(withIdentifier: "MainMenu") as! MainMenu
             
             //self.navigationController?.pushViewController(MainMenu, animated: true)
-            
-            
-            
             
         }
         else if pongBall.position.y >= enemyPaddle.position.y + 30

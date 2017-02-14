@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B826B79C1E535A30002C462A /* GameOver.sks in Resources */ = {isa = PBXBuildFile; fileRef = B826B79B1E535A30002C462A /* GameOver.sks */; };
 		B826B79E1E535BED002C462A /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B826B79D1E535BED002C462A /* GameOver.swift */; };
 		FF783EF81DFCC11D00AF6FB4 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FF783EF71DFCC11D00AF6FB4 /* Launch Screen.storyboard */; };
 		FFD17F7B1DF8E6F8007B5491 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD17F7A1DF8E6F8007B5491 /* AppDelegate.swift */; };
@@ -40,7 +39,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B826B79B1E535A30002C462A /* GameOver.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOver.sks; sourceTree = "<group>"; };
 		B826B79D1E535BED002C462A /* GameOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 		FF783EF71DFCC11D00AF6FB4 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		FFD17F771DF8E6F8007B5491 /* Pong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pong.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,7 +117,6 @@
 				FFD9B7071E2F0BDA00EA30C4 /* MainMenu.swift */,
 				FFD17F871DF8E6F8007B5491 /* Assets.xcassets */,
 				FFD17F8C1DF8E6F8007B5491 /* Info.plist */,
-				B826B79B1E535A30002C462A /* GameOver.sks */,
 				B826B79D1E535BED002C462A /* GameOver.swift */,
 			);
 			path = Pong;
@@ -257,7 +254,6 @@
 				FFD9B70F1E2F12C000EA30C4 /* Main.storyboard in Resources */,
 				FFD17F7D1DF8E6F8007B5491 /* GameScene.sks in Resources */,
 				FFD17F881DF8E6F8007B5491 /* Assets.xcassets in Resources */,
-				B826B79C1E535A30002C462A /* GameOver.sks in Resources */,
 				FFD17F7F1DF8E6F8007B5491 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

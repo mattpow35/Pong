@@ -19,6 +19,7 @@ class GameScene: SKScene
     var score = [Int]()
     var endlessScore = SKLabelNode()
     var onePlayerScore = [Int]()
+    var isGameOver = false
     
 
     
@@ -208,10 +209,8 @@ class GameScene: SKScene
         {
             addScore(winningPlayer : enemyPaddle)
             
-            //let MainMenu = self.storyboard?.instantiateViewController(withIdentifier: "MainMenu") as! MainMenu
-            
-            //self.navigationController?.pushViewController(MainMenu, animated: true)
-            
+            let gameOverScene: GameOver = GameOver(size: size)
+            view?.presentScene(gameOverScene, transition: SKTransition.doorsOpenHorizontal(withDuration: 1))
         }
         else if pongBall.position.y >= enemyPaddle.position.y + 30
         {

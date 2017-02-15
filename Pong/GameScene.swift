@@ -14,8 +14,6 @@ class GameScene: SKScene
     var pongBall = SKSpriteNode()
     var enemyPaddle = SKSpriteNode()
     var userPaddle = SKSpriteNode()
-    var enemyScore = SKLabelNode()
-    var userScore = SKLabelNode()
     var score = [Int]()
     var endlessScore = SKLabelNode()
     var onePlayerScore = [Int]()
@@ -26,15 +24,6 @@ class GameScene: SKScene
     
     override func didMove(to view: SKView)
     {
-        
-        
-        enemyScore = self.childNode(withName: "enemyScore") as! SKLabelNode
-        //enemyScore.position.x = (-self.frame.width / 2) + 25
-        //enemyScore.position.y = 50
-        
-        userScore = self.childNode(withName: "userScore") as! SKLabelNode
-        //userScore.position.x = (-self.frame.width / 2) + 25
-        //userScore.position.y = -50
         
         endlessScore = self.childNode(withName: "endlessScore") as! SKLabelNode
         endlessScore.position.x = 0
@@ -71,10 +60,6 @@ class GameScene: SKScene
     
     func startGame()
     {
-        score = [0,0]
-        
-        enemyScore.text = "\(score[1])"
-        userScore.text = "\(score[0])"
         
         onePlayerScore = [0]
         
@@ -106,34 +91,11 @@ class GameScene: SKScene
         
         if winningPlayer == userPaddle
         {
-            score[0] += 1
+
             
             onePlayerScore[0] += 1
             
-            if(score[0] % 2 == 1)
-            {
-                let when = DispatchTime.now() + 1
-                DispatchQueue.main.asyncAfter(deadline: when)
-                {
-                    self.pongBall.physicsBody?.applyImpulse(CGVector(dx: -12, dy: 12))
-                }
-            }
-            else
-            {
-                let when = DispatchTime.now() + 1
-                DispatchQueue.main.asyncAfter(deadline: when)
-                {
-                    self.pongBall.physicsBody?.applyImpulse(CGVector(dx: 12, dy: 12))
-                }
-            }
-            
-            
-        }
-        else if winningPlayer == enemyPaddle
-        {
-            score[1] += 1
-            
-            if(score[1] % 2 == 1)
+            if(onePlayerScore[0] % 2 == 1)
             {
                 let when = DispatchTime.now() + 1
                 DispatchQueue.main.asyncAfter(deadline: when)
@@ -150,11 +112,15 @@ class GameScene: SKScene
                 }
             }
             
-            onePlayerScore[0] = 0
             
         }
-        enemyScore.text = "\(score[1])"
-        userScore.text = "\(score[0])"
+        else if winningPlayer == enemyPaddle
+        {
+            onePlayerScore[0] = 0
+            
+           let gameOverSceneTemp = GameOverScene(fileNamed: "GameOverScene")
+            self.scene?.view?.presentScene(gameOverSceneTemp!, transition: SKTransition.doorsOpenHorizontal(withDuration: 1))
+        }
         
         endlessScore.text = "\(onePlayerScore[0])"
     }
@@ -209,8 +175,7 @@ class GameScene: SKScene
         {
             addScore(winningPlayer : enemyPaddle)
             
-            let gameOverScene: GameOver = GameOver(size: size)
-            view?.presentScene(gameOverScene, transition: SKTransition.doorsOpenHorizontal(withDuration: 1))
+            
         }
         else if pongBall.position.y >= enemyPaddle.position.y + 30
         {

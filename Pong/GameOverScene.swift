@@ -26,8 +26,8 @@ class GameOverScene: SKScene
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
-        let gameSceneTemp = GameScene(fileNamed: "GameScene")
-        self.scene?.view?.presentScene(gameSceneTemp!, transition: SKTransition.doorsOpenHorizontal(withDuration: 1))
+        let startSceneTemp = StartScene(fileNamed: "StartScene")
+        self.scene?.view?.presentScene(startSceneTemp!, transition: SKTransition.doorsOpenHorizontal(withDuration: 1))
     }
     
 

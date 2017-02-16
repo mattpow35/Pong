@@ -127,17 +127,12 @@ class GameScene: SKScene
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
-        
-        
-        
         for touch in touches
         {
             let location = touch.location(in: self)
             
             userPaddle.run(SKAction .moveTo(x: location.x, duration: 0.2))
         }
-        
-        
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?)
@@ -155,7 +150,7 @@ class GameScene: SKScene
     {
         // Called before each frame is rendered
         
-        switch currentDifficulty
+        switch currentMode
         {
         case .easy:
             enemyPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 1.0))

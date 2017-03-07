@@ -28,7 +28,7 @@ class StartScene : SKScene
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
-        goToGameScreen(Game: .medium)
+        goToGameScreen(Game: .hard)
      
     }
     
@@ -38,6 +38,6 @@ class StartScene : SKScene
         
         currentMode = Game
         
-        self.scene?.view?.presentScene(gameSceneTemp!, transition: SKTransition.doorsOpenHorizontal(withDuration: 1))
+        self.scene?.view?.presentScene(gameSceneTemp!, transition: SKTransition.doorsOpenHorizontal(withDuration: 0))
     }
 }

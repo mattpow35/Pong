@@ -70,7 +70,7 @@ class GameScene: SKScene
         let when = DispatchTime.now() + 3
         DispatchQueue.main.asyncAfter(deadline: when)
         {
-            self.pongBall.physicsBody?.applyImpulse(CGVector(dx: 8, dy: -8))
+            self.pongBall.physicsBody?.applyImpulse(CGVector(dx: 10, dy: -10))
         }
         
         
@@ -100,7 +100,7 @@ class GameScene: SKScene
                 let when = DispatchTime.now() + 1
                 DispatchQueue.main.asyncAfter(deadline: when)
                 {
-                    self.pongBall.physicsBody?.applyImpulse(CGVector(dx: -8, dy: -8))
+                    self.pongBall.physicsBody?.applyImpulse(CGVector(dx: -10, dy: -10))
                 }
             }
             else
@@ -108,7 +108,7 @@ class GameScene: SKScene
                 let when = DispatchTime.now() + 1
                 DispatchQueue.main.asyncAfter(deadline: when)
                 {
-                    self.pongBall.physicsBody?.applyImpulse(CGVector(dx: 8, dy: -8))
+                    self.pongBall.physicsBody?.applyImpulse(CGVector(dx: 10, dy: -10))
                 }
             }
             
@@ -159,7 +159,7 @@ class GameScene: SKScene
             enemyPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 0.75))
             break
         case .hard:
-            enemyPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 0.2))
+            enemyPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 0.15))
             break
         
         }

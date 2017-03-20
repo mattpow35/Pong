@@ -62,7 +62,6 @@ class GameScene: SKScene
     {
         
         onePlayerScore = [0]
-        
         endlessScore.text = "\(onePlayerScore[0])"
         
         
@@ -152,13 +151,10 @@ class GameScene: SKScene
         
         switch currentMode
         {
-        case .easy:
-            enemyPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 1.0))
-            break
-        case .medium:
+        case .twoPlayer:
             enemyPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 0.75))
             break
-        case .hard:
+        case .onePlayer:
             enemyPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 0.15))
             break
         

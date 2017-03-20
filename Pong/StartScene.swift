@@ -11,9 +11,8 @@ import UIKit
 import SpriteKit
 
 enum gameMode {
-    case easy
-    case medium
-    case hard
+    case onePlayer
+    case twoPlayer
 }
 
 class StartScene : SKScene
@@ -28,7 +27,7 @@ class StartScene : SKScene
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
-        goToGameScreen(Game: .hard)
+        goToGameScreen(Game: .onePlayer)
      
     }
     

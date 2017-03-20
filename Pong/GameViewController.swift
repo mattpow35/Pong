@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-var currentMode = gameMode.medium
+var currentMode = gameMode.onePlayer
 
 class GameViewController: UIViewController {
 

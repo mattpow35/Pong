@@ -18,8 +18,8 @@ class GameScene: SKScene
     var endlessScore = SKLabelNode()
     var onePlayerScore = [Int]()
     var isGameOver = false
-    
-
+    var counter = 3
+    var countdownTimer = SKLabelNode()
     
     
     override func didMove(to view: SKView)
@@ -38,8 +38,7 @@ class GameScene: SKScene
         userPaddle = self.childNode(withName: "userPaddle") as! SKSpriteNode
         userPaddle.position.y = (-self.frame.height / 2) + 50
         
-        
-        
+        countdownTimer = self.childNode(withName: "countdownTimer") as! SKLabelNode
        
 
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)
@@ -60,13 +59,15 @@ class GameScene: SKScene
     
     func startGame()
     {
+        var _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
+        
         
         onePlayerScore = [0]
         endlessScore.text = "\(onePlayerScore[0])"
         
         
     
-        let when = DispatchTime.now() + 3
+        let when = DispatchTime.now() + 4
         DispatchQueue.main.asyncAfter(deadline: when)
         {
             self.pongBall.physicsBody?.applyImpulse(CGVector(dx: 10, dy: -10))
@@ -75,6 +76,15 @@ class GameScene: SKScene
         
     }
     
+    func updateCounter()
+    {
+        if counter >= 0
+        {
+            print("\(counter)")
+            countdownTimer.text = "\(counter)"
+            counter -= 1
+        }
+    }
     
     func randomFloat(from: CGFloat, to: CGFloat) -> CGFloat
     {

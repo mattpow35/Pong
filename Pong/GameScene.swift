@@ -57,6 +57,14 @@ class GameScene: SKScene
         
         self.physicsBody = border
     
+//        var highScoreDefault = UserDefaults.standard
+//        if(highScoreDefault.value(forKey: "Highscore") != nil)
+//        {
+//            highScore = highScoreDefault.value(forKey: "HighScore") as! NSInteger
+//            highScoreLabel.text = "High Score: \(highScore)"
+//        }
+        
+        
         
         
         
@@ -136,7 +144,12 @@ class GameScene: SKScene
             if(onePlayerScore >= highScore)
             {
                 highScore = onePlayerScore
+                
             }
+            
+//            var highScoreDefault = UserDefaults.standard
+//            highScoreDefault.setValue(highScore, forKey: "Highscore")
+//            highScoreDefault.synchronize()
         
             
             

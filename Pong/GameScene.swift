@@ -19,7 +19,7 @@ class GameScene: SKScene
     var isGameOver = false
     var counter = 3
     var countdownTimer = SKLabelNode()
-    var highScore = Int()
+    var highScore = UserDefaults().integer(forKey: "Highscore")
     var highScoreLabel = SKLabelNode()
     
     var difficultyFactor = Double()
@@ -48,7 +48,7 @@ class GameScene: SKScene
         
         countdownTimer = self.childNode(withName: "countdownTimer") as! SKLabelNode
        
-        difficultyFactor = 0.5
+        difficultyFactor = 0.35
         
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)
         
@@ -57,12 +57,7 @@ class GameScene: SKScene
         
         self.physicsBody = border
     
-//        var highScoreDefault = UserDefaults.standard
-//        if(highScoreDefault.value(forKey: "Highscore") != nil)
-//        {
-//            highScore = highScoreDefault.value(forKey: "HighScore") as! NSInteger
-//            highScoreLabel.text = "High Score: \(highScore)"
-//        }
+
         
         
         
@@ -83,7 +78,8 @@ class GameScene: SKScene
         endlessScore.text = "Score: \(onePlayerScore)"
         
       
-    
+        highScoreLabel.text = "High Score: \(UserDefaults().integer(forKey: "Highscore"))"
+        
         let when = DispatchTime.now() + 4
         DispatchQueue.main.asyncAfter(deadline: when)
         {
@@ -120,7 +116,7 @@ class GameScene: SKScene
 
             
             onePlayerScore += 1
-            if(difficultyFactor != 0.05)
+            if(difficultyFactor != 0.1 && onePlayerScore % 2 == 1)
             {
                 difficultyFactor -= 0.05
             }
@@ -141,15 +137,13 @@ class GameScene: SKScene
                     self.pongBall.physicsBody?.applyImpulse(CGVector(dx: 6, dy: -10))
                 }
             }
-            if(onePlayerScore >= highScore)
+            if(onePlayerScore >= UserDefaults().integer(forKey: "Highscore"))
             {
-                highScore = onePlayerScore
+                saveHighScore()
                 
             }
             
-//            var highScoreDefault = UserDefaults.standard
-//            highScoreDefault.setValue(highScore, forKey: "Highscore")
-//            highScoreDefault.synchronize()
+
         
             
             
@@ -159,11 +153,17 @@ class GameScene: SKScene
             onePlayerScore = 0
             
            let gameOverSceneTemp = GameOverScene(fileNamed: "GameOverScene")
-            self.scene?.view?.presentScene(gameOverSceneTemp!, transition: SKTransition.doorsOpenHorizontal(withDuration: 1))
+            self.scene?.view?.presentScene(gameOverSceneTemp!, transition: SKTransition.doorsOpenHorizontal(withDuration: 0))
         }
         
         endlessScore.text = "Score: \(onePlayerScore)"
-        highScoreLabel.text = "High Score: \(highScore)"
+        highScoreLabel.text = "High Score: \(UserDefaults().integer(forKey: "Highscore"))"
+    }
+    
+    func saveHighScore()
+    {
+        UserDefaults.standard.set(onePlayerScore, forKey: "Highscore")
+        highScoreLabel.text = "High Score: \(UserDefaults().integer(forKey: "Highscore"))"
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)

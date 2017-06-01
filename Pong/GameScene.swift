@@ -14,7 +14,6 @@ class GameScene: SKScene
     var pongBall = SKSpriteNode()
     var enemyPaddle = SKSpriteNode()
     var userPaddle = SKSpriteNode()
-    var score = [Int]()
     var endlessScore = SKLabelNode()
     var onePlayerScore = Int()
     var isGameOver = false
@@ -22,6 +21,8 @@ class GameScene: SKScene
     var countdownTimer = SKLabelNode()
     var highScore = Int()
     var highScoreLabel = SKLabelNode()
+    
+    var difficultyFactor = Double()
     
     
     override func didMove(to view: SKView)
@@ -39,22 +40,23 @@ class GameScene: SKScene
             
         pongBall = self.childNode(withName: "pongBall") as! SKSpriteNode
         enemyPaddle = self.childNode(withName: "enemyPaddle") as! SKSpriteNode
-        enemyPaddle.position.y = (self.frame.height / 2) - 125
+        enemyPaddle.position.y = (self.frame.height / 2) - 150
         
         
         userPaddle = self.childNode(withName: "userPaddle") as! SKSpriteNode
-        userPaddle.position.y = (-self.frame.height / 2) + 125
+        userPaddle.position.y = (-self.frame.height / 2) + 150
         
         countdownTimer = self.childNode(withName: "countdownTimer") as! SKLabelNode
        
-
+        difficultyFactor = 0.5
+        
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)
         
         border.friction = 0
         border.restitution = 1
         
         self.physicsBody = border
-        
+    
         
         
         
@@ -110,6 +112,10 @@ class GameScene: SKScene
 
             
             onePlayerScore += 1
+            if(difficultyFactor != 0.05)
+            {
+                difficultyFactor -= 0.05
+            }
             
             if(onePlayerScore % 2 == 1)
             {
@@ -153,7 +159,7 @@ class GameScene: SKScene
         {
             let location = touch.location(in: self)
             
-            userPaddle.run(SKAction .moveTo(x: location.x, duration: 0.2))
+            userPaddle.run(SKAction .moveTo(x: location.x, duration: 0.1))
         }
     }
     
@@ -163,7 +169,7 @@ class GameScene: SKScene
         {
             let location = touch.location(in: self)
             
-            userPaddle.run(SKAction .moveTo(x: location.x, duration: 0.2))
+            userPaddle.run(SKAction .moveTo(x: location.x, duration: 0.1))
         }
     }
     
@@ -172,24 +178,15 @@ class GameScene: SKScene
     {
         // Called before each frame is rendered
         
-        switch currentMode
-        {
-        case .twoPlayer:
-            enemyPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 0.75))
-            break
-        case .onePlayer:
-            enemyPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 0.28))
-            break
+     
+       
+        enemyPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: difficultyFactor))
+            
         
-        }
-        
-    
         //Check if someone scored
         if pongBall.position.y <= userPaddle.position.y - 30
         {
             addScore(winningPlayer : enemyPaddle)
-            
-            
         }
         else if pongBall.position.y >= enemyPaddle.position.y + 30
         {
@@ -202,6 +199,9 @@ class GameScene: SKScene
         {
             countdownTimer.removeFromParent()
         }
+        
+        
+       
         
     }
     

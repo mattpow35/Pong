@@ -10,10 +10,7 @@ import GameplayKit
 import UIKit
 import SpriteKit
 
-enum gameMode {
-    case onePlayer
-    case twoPlayer
-}
+
 
 class StartScene : SKScene
 {
@@ -27,15 +24,13 @@ class StartScene : SKScene
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
     {
-        goToGameScreen(Game: .onePlayer)
-     
+        goToGameScreen()
     }
     
-    func goToGameScreen(Game : gameMode)
+    func goToGameScreen()
     {
         let gameSceneTemp = GameScene(fileNamed: "GameScene")
         
-        currentMode = Game
         
         self.scene?.view?.presentScene(gameSceneTemp!, transition: SKTransition.doorsOpenHorizontal(withDuration: 0))
     }

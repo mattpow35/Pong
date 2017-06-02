@@ -20,6 +20,8 @@ class StartScene : SKScene
     var pongBall = SKSpriteNode()
     
     var counter = Int()
+    var titleLabel = SKLabelNode()
+    
     
     override func didMove(to view: SKView)
     {
@@ -40,6 +42,10 @@ class StartScene : SKScene
         startLabel = self.childNode(withName: "startLabel") as! SKLabelNode
         startLabel.position.x = 0
         startLabel.position.y = 0
+        
+        titleLabel = self.childNode(withName: "titleLabel") as! SKLabelNode
+        titleLabel.position.x = 0
+        titleLabel.position.y = (self.frame.height / 2) - 100
         
         counter = 1
         

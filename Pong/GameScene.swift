@@ -20,6 +20,7 @@ class GameScene: SKScene
     var counter = 3
     var countdownTimer = SKLabelNode()
     var highScore = UserDefaults().integer(forKey: "Highscore")
+    var endScore = UserDefaults().integer(forKey: "Score")
     var highScoreLabel = SKLabelNode()
     
     var difficultyFactor = Double()
@@ -150,9 +151,12 @@ class GameScene: SKScene
         }
         else if winningPlayer == enemyPaddle
         {
+            UserDefaults.standard.set(onePlayerScore, forKey: "Score")
+            
+            
             onePlayerScore = 0
             
-           let gameOverSceneTemp = GameOverScene(fileNamed: "GameOverScene")
+            let gameOverSceneTemp = GameOverScene(fileNamed: "GameOverScene")
             self.scene?.view?.presentScene(gameOverSceneTemp!, transition: SKTransition.doorsOpenHorizontal(withDuration: 0))
         }
         

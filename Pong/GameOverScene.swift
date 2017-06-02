@@ -12,15 +12,25 @@ import GameplayKit
 class GameOverScene: SKScene
 {
     
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
+
     
     private var gameOverLabel : SKLabelNode?
     
+    private var scoreLabel = SKLabelNode()
+    private var highScoreLabel = SKLabelNode()
+    
     override func didMove(to view: SKView)
     {
+        scoreLabel = self.childNode(withName: "scoreLabel") as! SKLabelNode
+        scoreLabel.position.x = 0
+        scoreLabel.position.y = -30
         
+        highScoreLabel = self.childNode(withName: "highScoreLabel") as! SKLabelNode
+        highScoreLabel.position.x = 0
+        highScoreLabel.position.y = -60
         
+        scoreLabel.text = "Score: \(UserDefaults().integer(forKey: "Score"))"
+        highScoreLabel.text = "High Score: \(UserDefaults().integer(forKey: "Highscore"))"
     }
     
     

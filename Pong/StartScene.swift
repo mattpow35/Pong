@@ -14,12 +14,45 @@ import SpriteKit
 
 class StartScene : SKScene
 {
-   
+    var topPaddle = SKSpriteNode()
+    var bottomPaddle = SKSpriteNode()
+    var startLabel = SKLabelNode()
+    var pongBall = SKSpriteNode()
+    
+    var counter = Int()
     
     override func didMove(to view: SKView)
     {
         super.didMove(to: view)
-      
+        
+        
+        //Load and initialize all elements to the screen
+        topPaddle = self.childNode(withName: "topPaddle") as! SKSpriteNode
+        topPaddle.position.x = 0
+        topPaddle.position.y = (self.frame.height / 2) - 150
+        
+        bottomPaddle = self.childNode(withName: "bottomPaddle") as! SKSpriteNode
+        bottomPaddle.position.x = 0
+        bottomPaddle.position.y = (-self.frame.height / 2) + 150
+        
+        pongBall = self.childNode(withName: "pongBall") as! SKSpriteNode
+        
+        startLabel = self.childNode(withName: "startLabel") as! SKLabelNode
+        startLabel.position.x = 0
+        startLabel.position.y = 0
+        
+        counter = 1
+        
+        
+        
+        let border = SKPhysicsBody(edgeLoopFrom: self.frame)
+        
+        border.friction = 0
+        border.restitution = 1
+        
+        self.physicsBody = border
+        
+        self.pongBall.physicsBody?.applyImpulse(CGVector(dx: 6, dy: -10))
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
@@ -33,5 +66,45 @@ class StartScene : SKScene
         
         
         self.scene?.view?.presentScene(gameSceneTemp!, transition: SKTransition.doorsOpenHorizontal(withDuration: 0))
+    }
+    
+    func handleScoring()
+    {
+        counter += 1
+        pongBall.position = CGPoint(x: 0, y: 0)
+        pongBall.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        
+        if(counter % 2 == 1)
+        {
+            self.pongBall.physicsBody?.applyImpulse(CGVector(dx: -6, dy: -10))
+        }
+        else
+        {
+            self.pongBall.physicsBody?.applyImpulse(CGVector(dx: 6, dy: -10))
+        }
+    }
+    
+    override func update(_ currentTime: TimeInterval)
+    {
+        // Called before each frame is rendered
+        
+        
+        
+        topPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 0.12))
+        
+        bottomPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 0.26))
+
+        
+        
+        //Check if someone scored
+        if pongBall.position.y <= bottomPaddle.position.y - 30
+        {
+            handleScoring()
+        }
+        else if pongBall.position.y >= topPaddle.position.y + 30
+        {
+            handleScoring()
+        }
+        
     }
 }

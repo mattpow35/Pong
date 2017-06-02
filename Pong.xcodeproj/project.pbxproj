@@ -238,7 +238,7 @@
 				TargetAttributes = {
 					FFD17F761DF8E6F8007B5491 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 8N7CU7MXVT;
+						DevelopmentTeam = MMN428KHCY;
 						ProvisioningStyle = Automatic;
 					};
 					FFD17F901DF8E6F8007B5491 = {
@@ -449,10 +449,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 8N7CU7MXVT;
+				DEVELOPMENT_TEAM = MMN428KHCY;
 				INFOPLIST_FILE = Pong/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = mattpow.Pong;
+				PRODUCT_BUNDLE_IDENTIFIER = "MattPowley.ENDLESS-PONG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -463,10 +463,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 8N7CU7MXVT;
+				DEVELOPMENT_TEAM = MMN428KHCY;
 				INFOPLIST_FILE = Pong/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = mattpow.Pong;
+				PRODUCT_BUNDLE_IDENTIFIER = "MattPowley.ENDLESS-PONG";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

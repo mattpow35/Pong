@@ -94,11 +94,18 @@ class StartScene : SKScene
     {
         // Called before each frame is rendered
         
+        var zero = CGFloat()
+        zero = 0
         
+        if((pongBall.physicsBody?.velocity.dy)! > zero)
+        {
+            topPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 0.16))
+        }
         
-        topPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 0.12))
-        
-        bottomPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 0.26))
+        if((pongBall.physicsBody?.velocity.dy)! < zero)
+        {
+            bottomPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: 0.26))
+        }
 
         
         

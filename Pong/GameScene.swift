@@ -49,7 +49,7 @@ class GameScene: SKScene
         
         countdownTimer = self.childNode(withName: "countdownTimer") as! SKLabelNode
        
-        difficultyFactor = 0.35
+        difficultyFactor = 0.28
         
         let border = SKPhysicsBody(edgeLoopFrom: self.frame)
         
@@ -84,7 +84,7 @@ class GameScene: SKScene
         let when = DispatchTime.now() + 4
         DispatchQueue.main.asyncAfter(deadline: when)
         {
-            self.pongBall.physicsBody?.applyImpulse(CGVector(dx: 6, dy: -10))
+            self.pongBall.physicsBody?.applyImpulse(CGVector(dx: self.randomFloat(from: 5, to: 10), dy: -10))
         }
        
     }
@@ -117,9 +117,9 @@ class GameScene: SKScene
 
             
             onePlayerScore += 1
-            if(difficultyFactor != 0.1 && onePlayerScore % 2 == 1)
+            if(difficultyFactor != 0.14 && onePlayerScore % 4 == 0)
             {
-                difficultyFactor -= 0.05
+                difficultyFactor -= 0.02
             }
             
             if(onePlayerScore % 2 == 1)
@@ -127,7 +127,7 @@ class GameScene: SKScene
                 let when = DispatchTime.now() + 1
                 DispatchQueue.main.asyncAfter(deadline: when)
                 {
-                    self.pongBall.physicsBody?.applyImpulse(CGVector(dx: -6, dy: -10))
+                    self.pongBall.physicsBody?.applyImpulse(CGVector(dx: self.randomFloat(from: -10, to: -5), dy: -10))
                 }
             }
             else
@@ -135,7 +135,7 @@ class GameScene: SKScene
                 let when = DispatchTime.now() + 1
                 DispatchQueue.main.asyncAfter(deadline: when)
                 {
-                    self.pongBall.physicsBody?.applyImpulse(CGVector(dx: 6, dy: -10))
+                    self.pongBall.physicsBody?.applyImpulse(CGVector(dx: self.randomFloat(from: 5, to: 10), dy: -10))
                 }
             }
             if(onePlayerScore >= UserDefaults().integer(forKey: "Highscore"))
@@ -195,19 +195,25 @@ class GameScene: SKScene
     {
         // Called before each frame is rendered
         
-     
-       
+        var zero = CGFloat()
+        zero = 0
+        
+       if((pongBall.physicsBody?.velocity.dy)! > zero)
+       {
         enemyPaddle.run(SKAction .moveTo(x: pongBall.position.x, duration: difficultyFactor))
+        }
             
         
         //Check if someone scored
         if pongBall.position.y <= userPaddle.position.y - 30
         {
             addScore(winningPlayer : enemyPaddle)
+            
         }
         else if pongBall.position.y >= enemyPaddle.position.y + 30
         {
             addScore(winningPlayer : userPaddle)
+           
         }
         
         
@@ -216,6 +222,24 @@ class GameScene: SKScene
         {
             countdownTimer.removeFromParent()
         }
+        
+//        var xVel = CGFloat()
+//        xVel = 350
+//      
+//        
+//        if((pongBall.physicsBody?.velocity.dx)! > xVel)
+//        {
+//            pongBall.physicsBody?.velocity.dx = xVel
+//        }
+//        
+//        var yVel = CGFloat()
+//        yVel = 350
+//        
+//        
+//        if((pongBall.physicsBody?.velocity.dy)! > yVel)
+//        {
+//            pongBall.physicsBody?.velocity.dy = yVel
+//        }
         
         
        
